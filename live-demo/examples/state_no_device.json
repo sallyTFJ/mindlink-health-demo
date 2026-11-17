@@ -1,0 +1,48 @@
+{
+  "schema_version": "biosignal.state.v1",
+  "generated_at": 1794894775.1943736,
+  "eeg": {
+    "valid": false,
+    "reason": "eeg_input_disabled",
+    "total": 0,
+    "quality": null,
+    "raw": [],
+    "envelope": [],
+    "age_s": null
+  },
+  "brain_state": {
+    "valid": false,
+    "reason": "eeg_stale"
+  },
+  "band_history": [],
+  "band_names": [
+    "δ 1–4",
+    "θ 4–8",
+    "α 8–13",
+    "β 13–30",
+    "γ 30–45"
+  ],
+  "heart_rate": {
+    "valid": false,
+    "reason": "waiting_for_heart_file",
+    "bpm": null,
+    "age_s": null,
+    "source": null,
+    "event_id": null,
+    "sensor_contact": null,
+    "received_unix_ms": null,
+    "age_basis": "receiver_timestamp_then_local_monotonic",
+    "measurement_kind": "heart_rate_bpm_not_raw_ecg",
+    "rr_intervals_ms": null,
+    "hrv": null,
+    "semantics": "heart_rate_is_not_an_emotion_label",
+    "usable_for_adaptation": false,
+    "history": []
+  },
+  "ecg": {
+    "valid": false,
+    "reason": "raw_ecg_not_integrated",
+    "samples": null
+  },
+  "semantics": "Research estimates are uncalibrated. valid indicates protocol and freshness only."
+}

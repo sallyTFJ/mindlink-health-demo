@@ -1,0 +1,12 @@
+{
+  "host": "127.0.0.1",
+  "port": 9080,
+  "eeg_mode": "disabled",
+  "eeg_http_url": "http://127.0.0.1:8876/api/state",
+  "eeg_com": "COM6",
+  "eeg_baud": 57600,
+  "decode_interval_s": 5,
+  "heart_rate_file": "data/wearable.jsonl",
+  "demo_mode": false,
+  "wearable_name": "HeartCast"
+}

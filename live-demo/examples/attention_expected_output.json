@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0",
+  "model_version": "neuroecho-v3-reference-20261031",
+  "fold": 0,
+  "temporal_unit": "window",
+  "source": "public_replay",
+  "request_id": "public-example-attention",
+  "generated_at_unix_s": 1793421566.8965375,
+  "valid": true,
+  "reason": null,
+  "attention_score": 44.25698518753052,
+  "attention_class": "high_mind_wandering",
+  "valence_score": -0.04461563378572464,
+  "state_xy": {
+    "x": -0.04461563378572464,
+    "y": 44.25698518753052
+  },
+  "score_semantics": "Uncalibrated research model outputs; valid indicates signal/protocol QC only.",
+  "inference_ms": 2.0528901368379593,
+  "input_fs_hz": 250,
+  "input_samples": 1250,
+  "input_unit": "uV",
+  "quality": 0,
+  "sample_time_end_unix_s": null
+}

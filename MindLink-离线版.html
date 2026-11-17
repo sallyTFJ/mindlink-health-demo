@@ -51,7 +51,7 @@ a { color: inherit; }
 .brand strong { font-size: 17px; letter-spacing: .08em; }
 .brand small { color: var(--coral-dark); font-size: 10px; letter-spacing: .16em; font-weight: 700; text-transform: uppercase; }
 .desktop-nav { display: flex; align-items: center; gap: 6px; }
-.nav-link { border: 0; background: transparent; padding: 10px 16px; border-radius: 99px; font-size: 14px; color: #687875; cursor: pointer; transition: .2s; }
+.nav-link { border: 0; background: transparent; padding: 10px 16px; border-radius: 99px; font-size: 14px; color: #687875; cursor: pointer; transition: .2s; text-decoration: none; }
 .nav-link:hover, .nav-link.is-active { color: var(--ink); background: #fff3e7; }
 .top-actions { display: flex; align-items: center; gap: 12px; }
 .status-pill { font-size: 12px; border: 1px solid #dce9e5; padding: 7px 11px; border-radius: 99px; background: #f8fffc; color: #4c706a; }
@@ -75,6 +75,7 @@ a { color: inherit; }
 .primary-button.compact { padding: 10px 15px; }
 .secondary-button { background: #fff; border: 1px solid var(--line); box-shadow: 0 3px 12px rgba(95,75,58,.05); }
 .secondary-button:hover { border-color: #efb4a4; color: var(--coral-dark); }
+.live-launch { display:inline-flex; align-items:center; justify-content:center; color:var(--ink); text-decoration:none; }
 .trust-row { display: flex; gap: 20px; flex-wrap: wrap; margin-top: 28px; color: #788784; font-size: 12px; }
 .trust-row span::before { content: "✓"; color: var(--mint-dark); margin-right: 5px; font-weight: 800; }
 
@@ -189,6 +190,7 @@ footer { background:#243a36;color:#fff;padding:35px 0 }.footer-brand img{width:4
       <button class="nav-link" data-view="dashboard">今日状态</button>
       <button class="nav-link" data-view="companion">AI 陪伴</button>
       <button class="nav-link" data-view="reports">健康档案</button>
+      <a class="nav-link live-nav-link" href="#" onclick="alert('实时 EEG 陪伴台需要通过 START_MINDLINK_DEMO.cmd 启动本地服务。');return false;">实时陪伴台</a>
     </nav>
     <div class="top-actions">
       <span class="status-pill"><i></i> 2 台设备在线</span>
@@ -206,6 +208,7 @@ footer { background:#243a36;color:#fff;padding:35px 0 }.footer-brand img{width:4
           <div class="hero-actions">
             <button class="primary-button" data-view="dashboard">查看我的今日状态 <span>→</span></button>
             <button class="secondary-button" id="demoDeviceButton">体验实时设备流</button>
+            <a class="secondary-button live-launch" href="#" onclick="alert('实时 EEG 陪伴台需要通过 START_MINDLINK_DEMO.cmd 启动本地服务。');return false;">打开 EEG 实时陪伴台</a>
           </div>
           <div class="trust-row" aria-label="产品特性">
             <span>本地优先</span><span>趋势预警</span><span>可解释洞察</span><span>非医疗诊断</span>

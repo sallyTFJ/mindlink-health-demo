@@ -1,0 +1,507 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "NeuroEcho EEG Local API",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://127.0.0.1:8881"
+    }
+  ],
+  "paths": {
+    "/api/v1/infer": {
+      "post": {
+        "description": "Stateless five-second raw EEG window; never modifies a live stream.",
+        "responses": {
+          "200": {
+            "description": "JSON result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Prediction"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request; stream invalidated where applicable"
+          },
+          "404": {
+            "description": "Unknown stream or path"
+          },
+          "403": {
+            "description": "Origin not allowed"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/WindowInput"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/streams/{stream_id}/samples": {
+      "parameters": [
+        {
+          "name": "stream_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_-]{1,64}$"
+          }
+        }
+      ],
+      "post": {
+        "description": "Append at most one second. Needs five continuous seconds; inference at most once per sample-second.",
+        "responses": {
+          "200": {
+            "description": "JSON result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Prediction"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request; stream invalidated where applicable"
+          },
+          "404": {
+            "description": "Unknown stream or path"
+          },
+          "403": {
+            "description": "Origin not allowed"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ChunkInput"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/streams/{stream_id}/state": {
+      "parameters": [
+        {
+          "name": "stream_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_-]{1,64}$"
+          }
+        }
+      ],
+      "get": {
+        "description": "Latest state. Scores become null after 1.5 seconds without new chunks.",
+        "responses": {
+          "200": {
+            "description": "JSON result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Prediction"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request; stream invalidated where applicable"
+          },
+          "404": {
+            "description": "Unknown stream or path"
+          },
+          "403": {
+            "description": "Origin not allowed"
+          }
+        }
+      }
+    },
+    "/api/v1/streams/{stream_id}/reset": {
+      "parameters": [
+        {
+          "name": "stream_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_-]{1,64}$"
+          }
+        }
+      ],
+      "post": {
+        "description": "Clear history; send an empty JSON object.",
+        "responses": {
+          "200": {
+            "description": "JSON result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Prediction"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request; stream invalidated where applicable"
+          },
+          "404": {
+            "description": "Unknown stream or path"
+          },
+          "403": {
+            "description": "Origin not allowed"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Empty"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/streams/{stream_id}": {
+      "parameters": [
+        {
+          "name": "stream_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_-]{1,64}$"
+          }
+        }
+      ],
+      "delete": {
+        "responses": {
+          "200": {
+            "description": "Deleted stream_id"
+          },
+          "404": {
+            "description": "Unknown stream"
+          }
+        }
+      }
+    },
+    "/api/v1/health": {
+      "get": {
+        "description": "Runtime health",
+        "responses": {
+          "200": {
+            "description": "JSON metadata"
+          }
+        }
+      }
+    },
+    "/api/v1/model": {
+      "get": {
+        "description": "Model manifest with folds and checksums",
+        "responses": {
+          "200": {
+            "description": "JSON metadata"
+          }
+        }
+      }
+    },
+    "/api/v1/streams": {
+      "get": {
+        "description": "Known stream IDs",
+        "responses": {
+          "200": {
+            "description": "JSON metadata"
+          }
+        }
+      }
+    },
+    "/api/v1/ports": {
+      "get": {
+        "description": "Available local serial ports",
+        "responses": {
+          "200": {
+            "description": "JSON metadata"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "WindowInput": {
+        "type": "object",
+        "required": [
+          "samples",
+          "fs_hz",
+          "unit",
+          "channel",
+          "source"
+        ],
+        "properties": {
+          "samples": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 1,
+            "maxItems": 2560,
+            "description": "Single-channel time-ordered raw samples. /infer requires exactly 5*fs; streaming at most fs samples."
+          },
+          "fs_hz": {
+            "type": "integer",
+            "enum": [
+              128,
+              250,
+              256,
+              512
+            ]
+          },
+          "unit": {
+            "type": "string",
+            "enum": [
+              "uV",
+              "neurosky_counts"
+            ]
+          },
+          "channel": {
+            "type": "string",
+            "enum": [
+              "Fp1"
+            ]
+          },
+          "source": {
+            "type": "string",
+            "enum": [
+              "device",
+              "external_live",
+              "public_replay",
+              "offline"
+            ]
+          },
+          "quality": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 0,
+            "maximum": 200,
+            "description": "0 means current contact quality is good; null/absent or nonzero returns valid=false."
+          },
+          "request_id": {
+            "type": "string",
+            "maxLength": 128
+          },
+          "sample_time_end_unix_s": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "minimum": 0,
+            "description": "Optional sender-supplied timestamp, echoed; never used instead of server arrival TTL."
+          }
+        }
+      },
+      "ChunkInput": {
+        "type": "object",
+        "required": [
+          "samples",
+          "fs_hz",
+          "unit",
+          "channel",
+          "source",
+          "sample_index"
+        ],
+        "properties": {
+          "samples": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 1,
+            "maxItems": 2560,
+            "description": "Single-channel time-ordered raw samples. /infer requires exactly 5*fs; streaming at most fs samples."
+          },
+          "fs_hz": {
+            "type": "integer",
+            "enum": [
+              128,
+              250,
+              256,
+              512
+            ]
+          },
+          "unit": {
+            "type": "string",
+            "enum": [
+              "uV",
+              "neurosky_counts"
+            ]
+          },
+          "channel": {
+            "type": "string",
+            "enum": [
+              "Fp1"
+            ]
+          },
+          "source": {
+            "type": "string",
+            "enum": [
+              "device",
+              "external_live",
+              "public_replay",
+              "offline"
+            ]
+          },
+          "quality": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 0,
+            "maximum": 200,
+            "description": "0 means current contact quality is good; null/absent or nonzero returns valid=false."
+          },
+          "request_id": {
+            "type": "string",
+            "maxLength": 128
+          },
+          "sample_time_end_unix_s": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "minimum": 0,
+            "description": "Optional sender-supplied timestamp, echoed; never used instead of server arrival TTL."
+          },
+          "sample_index": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740991,
+            "description": "Index of first sample, contiguous per stream/session; reset/new ID on reconnect."
+          }
+        }
+      },
+      "Prediction": {
+        "type": "object",
+        "required": [
+          "schema_version",
+          "model_version",
+          "fold",
+          "valid",
+          "reason",
+          "source",
+          "temporal_unit",
+          "attention_score",
+          "valence_score",
+          "state_xy"
+        ],
+        "properties": {
+          "schema_version": {
+            "const": "1.0"
+          },
+          "model_version": {
+            "type": "string"
+          },
+          "fold": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 4
+          },
+          "valid": {
+            "type": "boolean",
+            "description": "Input protocol/quality check only; not scientific validation or confidence."
+          },
+          "reason": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "source": {
+            "type": "string"
+          },
+          "temporal_unit": {
+            "const": "window"
+          },
+          "attention_score": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "minimum": 0,
+            "maximum": 100
+          },
+          "valence_score": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "minimum": -1,
+            "maximum": 1
+          },
+          "state_xy": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "x": {
+                    "type": "number"
+                  },
+                  "y": {
+                    "type": "number"
+                  }
+                },
+                "required": [
+                  "x",
+                  "y"
+                ]
+              }
+            ]
+          },
+          "generated_at_unix_s": {
+            "type": "number"
+          },
+          "sequence": {
+            "type": "integer"
+          },
+          "segment": {
+            "type": "integer"
+          },
+          "stream_id": {
+            "type": "string"
+          },
+          "inference_ms": {
+            "type": "number"
+          },
+          "next_sample_index": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          }
+        }
+      },
+      "Empty": {
+        "type": "object"
+      }
+    }
+  }
+}

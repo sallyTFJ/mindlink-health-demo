@@ -19,6 +19,7 @@ html = html
   .replace(/\s*<link rel="manifest"[^>]*>/, '')
   .replace(/<link rel="icon"[^>]*>/, `<link rel="icon" href="${logoUri}">`)
   .replace('<link rel="stylesheet" href="styles.css">', `<style>\n${css}\n</style>`)
+  .replaceAll('href="live/"', 'href="#" onclick="alert(\'实时 EEG 陪伴台需要通过 START_MINDLINK_DEMO.cmd 启动本地服务。\');return false;"')
   .replaceAll('src="assets/logo-mark.svg"', `src="${logoUri}"`)
   .replace('href="data/mindlink-sample.json" download', `href="${sampleUri}" download="mindlink-sample.json"`)
   .replace('<script src="app.js" defer></script>', `<script>\n${js.replaceAll("'assets/logo-mark.svg'", JSON.stringify(logoUri))}\n</script>`)

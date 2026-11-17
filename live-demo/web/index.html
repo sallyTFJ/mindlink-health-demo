@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#fff7ec">
+  <meta name="description" content="心脑灵犀 MindLink——本地 EEG、可穿戴数据与温柔语音陪伴演示台。">
+  <title>心脑灵犀 MindLink｜实时陪伴台</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到主要内容</a>
+  <div class="ambient ambient-one" aria-hidden="true"></div><div class="ambient ambient-two" aria-hidden="true"></div>
+  <header class="topbar">
+    <a class="brand" href="#main" aria-label="心脑灵犀实时陪伴台">
+      <span class="brand-mark"><i></i><i></i><i></i></span>
+      <span><strong>心脑灵犀</strong><small>MindLink · LIVE</small></span>
+    </a>
+    <div class="top-status"><span class="pulse-dot"></span><span id="connection">正在连接本地服务</span></div>
+    <div class="top-actions">
+      <button class="quiet-button" id="exportButton">导出本次状态</button>
+      <button class="voice-button" id="voiceButton" aria-pressed="false"><span>◖</span> 开启语音陪伴</button>
+    </div>
+  </header>
+
+  <main id="main" class="shell">
+    <section class="mode-banner" id="modeBanner"><strong>本地优先</strong><span id="modeText">识别运行模式中</span><small>所有推断都保留来源与有效性，不用旧值冒充实时数据。</small></section>
+
+    <section class="hero-grid">
+      <article class="hero-card">
+        <div class="hero-copy">
+          <p class="eyebrow">AI × BCI × WEARABLE COMPANION</p>
+          <h1>看见变化，<br><em>在需要时温柔开口。</em></h1>
+          <p>把单通道 EEG、心率与主动感受放在同一条时间线上。系统只提示相对基线变化，不把研究分数当作焦虑、抑郁或躁狂诊断。</p>
+          <div class="trust-row"><span>本地计算</span><span>数据溯源</span><span>语音可控</span><span>不自动电刺激</span></div>
+        </div>
+        <div class="sync-orb" aria-label="当前身心节律分数">
+          <div class="orbit orbit-a"></div><div class="orbit orbit-b"></div>
+          <div><small>此刻节律</small><strong id="wellnessScore">—</strong><span id="wellnessLabel">等待数据</span></div>
+        </div>
+      </article>
+
+      <article class="support-card" id="supportCard" data-level="collecting">
+        <div class="support-head"><span class="companion-avatar">灵</span><div><small>AI 陪伴 · 此刻建议</small><strong id="supportTitle">正在等待可信数据</strong></div><span class="confidence" id="supportConfidence">谨慎提示</span></div>
+        <p id="supportMessage">系统会先确认信号连续性，再决定是否打扰你。</p>
+        <div class="voice-preview"><span>语音</span><p id="voiceText">开启语音陪伴后，重要提示会使用系统中文语音朗读。</p><button id="speakNow" aria-label="朗读当前提示">▶</button></div>
+        <ul class="action-list" id="actionList"><li>检查 EEG 与手表连接</li><li>也可以直接告诉我你的感受</li></ul>
+        <p class="medical-note" id="medicalNote">趋势提示不等于医学或心理诊断。</p>
+      </article>
+    </section>
+
+    <section class="signal-grid" aria-label="实时生理信号">
+      <article class="panel eeg-panel">
+        <div class="panel-head"><div><p class="panel-kicker">EEG · FP1</p><h2>脑电实时流</h2></div><span class="device-badge" id="eegStatus">等待设备</span></div>
+        <div class="eeg-metrics">
+          <div><small>接触质量</small><strong id="quality">—</strong></div>
+          <div><small>专注代理</small><strong><span id="focus">—</span><i>/100</i></strong></div>
+          <div><small>效价代理</small><strong id="valence">—</strong></div>
+          <div><small>累计 RAW</small><strong id="total">—</strong></div>
+        </div>
+        <div class="canvas-wrap"><canvas id="wave" width="1000" height="250" aria-label="最近五秒 EEG 波形"></canvas><span>最近约 5 秒 · 原始波形与 RMS 包络</span></div>
+        <div class="band-row"><div class="band-labels" id="bandLabels"></div><canvas id="bands" width="1000" height="130" aria-label="EEG 频段相对功率"></canvas></div>
+        <p class="fineprint">接触不良时仍可显示真实噪声，但不会送入模型；断流立即清空，不插值、不生成假波形。</p>
+      </article>
+
+      <aside class="wearable-stack">
+        <article class="metric-panel heart-panel"><div class="metric-heading"><span>♡</span><div><small>实时心率</small><strong><b id="bpm">—</b> bpm</strong></div><i id="heartStatus">等待手表</i></div><canvas id="heartChart" width="420" height="90"></canvas><p>来源 <span id="heartSource">—</span></p></article>
+        <div class="metric-pair">
+          <article class="metric-panel"><small>血压</small><strong><span id="bloodPressure">— / —</span><i>mmHg</i></strong><p id="bpSource">等待最近一次测量</p></article>
+          <article class="metric-panel"><small>血氧</small><strong><span id="spo2">—</span><i>%</i></strong><p id="spo2Source">等待最近一次测量</p></article>
+        </div>
+        <article class="device-panel">
+          <div><small>实时接入</small><h3>EEG 串口 + 标准 BLE</h3></div>
+          <p>NeuroSky / ThinkGear 使用 COM 串口；Apple Watch 可通过 HeartCast；暴露标准 BLE 心率/血压服务的设备可直接桥接。</p>
+          <div class="device-actions"><button id="portsButton">检查 EEG 串口</button><button id="guideButton">连接指引</button></div>
+          <p class="vendor-note">华为、Apple Health 等未开放标准 BLE 的产品，需要官方健康平台或手机伴侣应用转发，不能保证任意手表直接连接。</p>
+        </article>
+      </aside>
+    </section>
+
+    <section class="checkin-section">
+      <div class="section-copy"><p class="eyebrow">HUMAN-IN-THE-LOOP</p><h2>信号之外，也请告诉我你真实的感受</h2><p>高风险提醒不会只凭 EEG 自动判断。你的主动反馈始终拥有更高优先级。</p></div>
+      <div class="checkin-buttons" role="group" aria-label="主动状态反馈">
+        <button data-checkin="calm"><span>☀</span><strong>我现在还好</strong><small>继续安静监测</small></button>
+        <button data-checkin="tense"><span>◌</span><strong>我有点紧绷</strong><small>给我一分钟缓冲</small></button>
+        <button data-checkin="overwhelmed"><span>≈</span><strong>我难以舒缓</strong><small>启动温柔陪伴</small></button>
+        <button data-checkin="task_complete"><span>✓</span><strong>我完成了难事</strong><small>记录这一刻</small></button>
+        <button class="unsafe" data-checkin="unsafe"><span>!</span><strong>我现在不安全</strong><small>立即显示真人支持步骤</small></button>
+      </div>
+    </section>
+
+    <section class="guardrail-grid">
+      <article><span class="guard-icon">声</span><div><h3>语音提醒由你控制</h3><p>首次点击开启后，浏览器使用本机中文语音朗读；重复提示有冷却时间，避免越焦虑越被打扰。</p></div></article>
+      <article><span class="guard-icon">盾</span><div><h3>不做危险自动化</h3><p>系统不会自动拨号、发送消息或启动任何刺激设备；紧急情况只提供清晰的真人求助步骤。</p></div></article>
+      <article><span class="guard-icon">⚡</span><div><h3>刺激设备仅作专业辅助</h3><p>不提供电流、频率或放置参数，不自动连接和触发。仅在专业人员指导及设备说明范围内由本人操作。</p><button class="text-button" id="stimulationButton">查看安全边界 →</button></div></article>
+    </section>
+
+    <footer><strong>心脑灵犀 MindLink</strong><span>看见身心同频，提前守护健康。</span><small>本地演示版 · 研究用途 · 非医疗器械 · 不替代专业评估与紧急服务</small></footer>
+  </main>
+
+  <dialog id="guideDialog"><button class="dialog-close" data-dialog-close aria-label="关闭">×</button><p class="eyebrow">LIVE CONNECTION</p><h2>现场连接顺序</h2><ol><li><strong>先启动实时服务：</strong>双击 START_MINDLINK_LIVE.cmd。</li><li><strong>连接 EEG：</strong>在 config.json 设置 eeg_mode 为 serial，并填写 ThinkGear 的 COM 端口；重启服务。</li><li><strong>连接手表：</strong>Apple Watch 打开 HeartCast，或让兼容设备广播标准 BLE 心率服务，再双击 START_WEARABLE_BRIDGE.cmd。</li><li><strong>华为/其他平台：</strong>通过官方健康平台或手机伴侣，将数据 POST 到本机 /api/v1/wearable。</li></ol><p class="dialog-note">一个 COM 端口只能被一个程序占用。现场先完成 5–10 分钟静坐基线和断流测试。</p></dialog>
+  <dialog id="stimulationDialog"><button class="dialog-close" data-dialog-close aria-label="关闭">×</button><p class="eyebrow">SAFETY BOUNDARY</p><h2>关于局部电刺激</h2><p>MindLink 当前只提供“可考虑咨询专业人员”的文字提示，不控制刺激硬件，也不推荐任何刺激参数。</p><ul><li>仅使用合法合规且适用于本人的设备。</li><li>由医生或合格专业人员确认适用性与禁忌。</li><li>不要在驾驶、洗浴、睡眠或无法及时停止时使用。</li><li>出现疼痛、头晕、皮肤异常或其他不适时立即停止并寻求专业帮助。</li></ul><button class="primary-button" data-dialog-close>我已了解安全边界</button></dialog>
+  <div id="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>

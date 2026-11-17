@@ -4,6 +4,8 @@
 
 在线演示：<https://sallytfj.github.io/mindlink-health-demo/>
 
+实时陪伴台（网页合成演示）：<https://sallytfj.github.io/mindlink-health-demo/live/>
+
 项目仓库：<https://github.com/sallyTFJ/mindlink-health-demo>
 
 ![微信扫码体验 MindLink](MindLink-微信扫码体验.png)
@@ -16,6 +18,7 @@
 - `miniprogram/`：原生微信小程序工程；
 - `docs/`：数据协议、系统架构、比赛提交文案和商业化边界；
 - `research/`：论文资料索引、官方来源、许可边界和下载校验信息。第三方原始归档不在本仓库重复发布。
+- `live-demo/`：Windows 本地实时版，支持 ThinkGear EEG、标准 BLE 心率/血压、状态自报与可控中文语音陪伴。
 
 ## 快速体验
 
@@ -44,6 +47,15 @@ python -m http.server 4173 --directory web/dist
 
 推送到 `main` 分支后，`.github/workflows/pages.yml` 会自动把 `web/dist/` 发布到 GitHub Pages。
 
+### Windows 实时硬件演示
+
+1. 进入 `live-demo/`，首次运行双击 `SETUP_WINDOWS.cmd` 安装本地依赖；
+2. 无设备演示双击 `START_MINDLINK_DEMO.cmd`；
+3. ThinkGear 脑电帽接入后，在 `config.json` 设置 COM 端口，再双击 `START_MINDLINK_LIVE.cmd`；
+4. 标准 BLE 心率设备可运行 `START_WEARABLE_BRIDGE.cmd`；不能直接暴露标准 BLE 服务的手表需要官方健康平台或手机伴侣转发。
+
+比赛现场建议先用合成模式完整演示，再切换真实设备。详细步骤与安全边界见 [实时陪伴台说明](live-demo/README_MINDLINK.md)。
+
 ### 微信小程序
 
 使用微信开发者工具导入 `miniprogram/`。演示阶段可使用 `touristappid`；正式发布前替换为团队小程序 AppID，并完成隐私保护指引、业务域名与数据安全配置。
@@ -60,6 +72,8 @@ python -m http.server 4173 --directory web/dist
 - 优势倾向、人格光谱、职业动力自我反思工具；
 - PWA 安装、离线缓存和移动端底部导航；
 - 微信小程序原生仪表盘、实时演示、AI 对话与报告导入。
+- ThinkGear EEG 串口解码、标准 BLE 心率/血压桥、状态自报和浏览器中文语音陪伴；
+- 保守分层提示：被动信号只提示暂停与自我确认，安全升级只由用户主动反馈触发。
 
 ## 论文与数据结论
 

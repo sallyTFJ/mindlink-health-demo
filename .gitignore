@@ -20,3 +20,11 @@ research/nature-supplementary/
 research/*.zip
 research/*.xml
 
+# MindLink real-time demo runtime and private health data
+live-demo/.venv/
+live-demo/runtime/
+live-demo/private/
+live-demo/data/
+live-demo/**/__pycache__/
+live-demo/SELF_CHECK_RESULT.json
+

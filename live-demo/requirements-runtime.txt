@@ -1,0 +1,7 @@
+numpy==1.26.4
+scipy==1.13.1
+onnxruntime==1.20.1
+pyserial==3.5
+bleak==0.22.3
+bleak-winrt==1.2.0; platform_system == "Windows"
+typing-extensions==4.12.2

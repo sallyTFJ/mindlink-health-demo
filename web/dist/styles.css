@@ -39,7 +39,7 @@ a { color: inherit; }
 .brand strong { font-size: 17px; letter-spacing: .08em; }
 .brand small { color: var(--coral-dark); font-size: 10px; letter-spacing: .16em; font-weight: 700; text-transform: uppercase; }
 .desktop-nav { display: flex; align-items: center; gap: 6px; }
-.nav-link { border: 0; background: transparent; padding: 10px 16px; border-radius: 99px; font-size: 14px; color: #687875; cursor: pointer; transition: .2s; }
+.nav-link { border: 0; background: transparent; padding: 10px 16px; border-radius: 99px; font-size: 14px; color: #687875; cursor: pointer; transition: .2s; text-decoration: none; }
 .nav-link:hover, .nav-link.is-active { color: var(--ink); background: #fff3e7; }
 .top-actions { display: flex; align-items: center; gap: 12px; }
 .status-pill { font-size: 12px; border: 1px solid #dce9e5; padding: 7px 11px; border-radius: 99px; background: #f8fffc; color: #4c706a; }
@@ -63,6 +63,7 @@ a { color: inherit; }
 .primary-button.compact { padding: 10px 15px; }
 .secondary-button { background: #fff; border: 1px solid var(--line); box-shadow: 0 3px 12px rgba(95,75,58,.05); }
 .secondary-button:hover { border-color: #efb4a4; color: var(--coral-dark); }
+.live-launch { display:inline-flex; align-items:center; justify-content:center; color:var(--ink); text-decoration:none; }
 .trust-row { display: flex; gap: 20px; flex-wrap: wrap; margin-top: 28px; color: #788784; font-size: 12px; }
 .trust-row span::before { content: "✓"; color: var(--mint-dark); margin-right: 5px; font-weight: 800; }
 
