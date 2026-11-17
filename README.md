@@ -6,6 +6,8 @@
 
 实时陪伴台（网页合成演示）：<https://sallytfj.github.io/mindlink-health-demo/live/>
 
+当前版本：2026-11-18 已集成 ThinkGear EEG、标准 BLE 可穿戴桥、状态自报与可控中文语音陪伴。
+
 项目仓库：<https://github.com/sallyTFJ/mindlink-health-demo>
 
 ![微信扫码体验 MindLink](MindLink-微信扫码体验.png)
@@ -103,3 +105,4 @@ python -m http.server 4173 --directory web/dist
 ## 重要声明
 
 当前版本是黑客松产品原型，不是医疗器械，不用于诊断、预后或治疗。页面中的用户、报告和健康数值全部为合成演示数据。出现胸痛、呼吸困难、意识改变、严重过敏或自伤风险等紧急情况，应立即联系当地急救与专业人员。
+
