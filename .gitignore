@@ -1,0 +1,22 @@
+# Operating system and editor files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Local build and dependency caches
+node_modules/
+*.log
+.local/
+
+# The web folder was previously synchronized as a standalone checkout.
+web/.git/
+web/.openai/
+
+# Downloaded third-party research archives are intentionally not republished.
+# See research/README.md for verified upstream sources and license notes.
+research/consumer-health-research-main/
+research/nature-supplementary/
+research/*.zip
+research/*.xml
+

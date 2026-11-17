@@ -1,0 +1,16 @@
+{
+  "meta": {"schema_version":"1.0","source":"MindLink synthetic hackathon demo","synthetic":true},
+  "profile": {"display_name":"林然","age_range":"25-34","data_consent":"local-demo-only"},
+  "latest": {
+    "timestamp":"2026-11-16T20:30:00+08:00",
+    "heart_rate_bpm":72,
+    "hrv_rmssd_ms":46,
+    "blood_pressure_mmhg":{"systolic":118,"diastolic":76},
+    "fasting_glucose_mmol_l":5.2,
+    "steps":8642,
+    "sleep_minutes":452,
+    "eeg":{"alpha_hz":10.2,"calm_score":68,"focus_score":74,"signal_quality":92},
+    "mood":{"label":"平静","energy_0_10":7},
+    "cycle":{"day":12,"regularity":"regular"}
+  }
+}

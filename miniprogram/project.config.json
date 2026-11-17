@@ -1,0 +1,9 @@
+{
+  "description": "心脑灵犀 MindLink 黑客松微信小程序原型",
+  "packOptions": {"ignore": ["README.md"]},
+  "setting": {"urlCheck": true, "es6": true, "enhance": true, "compileHotReLoad": true, "postcss": true, "minified": true},
+  "compileType": "miniprogram",
+  "appid": "touristappid",
+  "projectname": "mindlink-miniprogram",
+  "miniprogramRoot": "./"
+}

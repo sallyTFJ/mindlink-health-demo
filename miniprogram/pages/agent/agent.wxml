@@ -1,0 +1,9 @@
+<view class="page agent-page safe">
+  <view class="agent-hero"><view class="logo">✦</view><view><text class="agent-title">灵犀陪伴智能体</text><text class="muted">数据科学 × 健康知识 × 温暖教练</text></view></view>
+  <view class="messages" scroll-y scroll-into-view="latest">
+    <block wx:for="{{messages}}" wx:key="id"><view class="msg {{item.role}}"><text>{{item.text}}</text></view></block><view id="latest"></view>
+  </view>
+  <view class="chips"><text bindtap="quickAsk" data-text="为什么下午容易疲惫？">为什么下午容易疲惫？</text><text bindtap="quickAsk" data-text="我今天有点焦虑">我今天有点焦虑</text><text bindtap="quickAsk" data-text="给我一个今晚计划">今晚计划</text></view>
+  <view class="composer"><input value="{{input}}" bindinput="onInput" placeholder="说说你的感受或数据问题…" confirm-type="send" bindconfirm="send"/><button bindtap="send">发送</button></view>
+  <text class="disclaimer">AI 回答用于健康管理与情绪支持，不替代专业医疗服务。</text>
+</view>

@@ -1,0 +1,7 @@
+<view class="page safe">
+  <text class="eyebrow">PERSONAL HEALTH VAULT</text><text class="title">健康档案，一处看懂</text><text class="subtitle">导入体检报告与设备数据，建立纵向健康基线。</text>
+  <view class="upload card" bindtap="chooseFile"><text class="up">⇧</text><text class="upload-title">选择微信文件</text><text class="muted">支持 PDF、图片、CSV 与 JSON</text><button class="primary">选择文件</button><text class="tip">请先去除身份证号等不必要信息</text></view>
+  <view class="card formats"><text class="section-title">已支持数据</text><view><text>EEG 频段</text><text>心率 / HRV</text><text>睡眠阶段</text><text>步数 / 运动</text><text>血压</text><text>血糖</text><text>生理周期</text><text>情绪日记</text></view></view>
+  <view class="notice">小程序演示版只读取文件名，不上传健康文件。正式版需完成隐私合规、加密与用户知情同意。</view>
+  <view class="files"><block wx:for="{{files}}" wx:key="name"><view class="file card"><view class="file-icon">{{item.ext}}</view><view><text>{{item.name}}</text><text class="muted">{{item.size}} KB · 本地读取</text></view><text class="ok">已添加</text></view></block></view>
+</view>

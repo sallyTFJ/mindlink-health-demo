@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#fff9ee">
+  <meta name="description" content="心脑灵犀 MindLink——融合脑电、可穿戴与健康档案的身心健康趋势智能体。">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="心脑灵犀">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="assets/logo-mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <title>心脑灵犀 MindLink｜看见身心同频</title>
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到主要内容</a>
+  <div class="sun-glow sun-one" aria-hidden="true"></div>
+  <div class="sun-glow sun-two" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <a class="brand" href="#home" aria-label="心脑灵犀首页">
+      <img src="assets/logo-mark.svg" alt="" width="46" height="46">
+      <span><strong>心脑灵犀</strong><small>MindLink</small></span>
+    </a>
+    <nav class="desktop-nav" aria-label="主导航">
+      <button class="nav-link is-active" data-view="home">首页</button>
+      <button class="nav-link" data-view="dashboard">今日状态</button>
+      <button class="nav-link" data-view="companion">AI 陪伴</button>
+      <button class="nav-link" data-view="reports">健康档案</button>
+    </nav>
+    <div class="top-actions">
+      <span class="status-pill"><i></i> 2 台设备在线</span>
+      <button class="avatar-button" aria-label="打开个人中心" data-view="profile">林</button>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="view is-active" id="home" data-view-panel="home">
+      <div class="hero section-wrap">
+        <div class="hero-copy">
+          <p class="eyebrow"><span>AI × BCI × DIGITAL HEALTH</span> 黑客松演示版</p>
+          <h1>看见身心同频，<br><em>提前守护健康。</em></h1>
+          <p class="hero-text">把脑电、心率、睡眠、运动与每日情绪放在同一条时间线上。心脑灵犀不是替你下诊断，而是帮你更早发现变化、更从容地照顾自己。</p>
+          <div class="hero-actions">
+            <button class="primary-button" data-view="dashboard">查看我的今日状态 <span>→</span></button>
+            <button class="secondary-button" id="demoDeviceButton">体验实时设备流</button>
+          </div>
+          <div class="trust-row" aria-label="产品特性">
+            <span>本地优先</span><span>趋势预警</span><span>可解释洞察</span><span>非医疗诊断</span>
+          </div>
+        </div>
+        <div class="hero-visual" aria-label="心脑同频实时预览">
+          <div class="orbital-card">
+            <div class="live-badge"><i></i> LIVE</div>
+            <div class="orbit orbit-one"></div>
+            <div class="orbit orbit-two"></div>
+            <div class="sync-core">
+              <span>身心同频度</span>
+              <strong id="heroSync">82</strong>
+              <small>状态稳定 · 较昨日 +4</small>
+            </div>
+            <div class="floating-chip chip-eeg"><b>α 波</b><span id="heroAlpha">10.2 Hz</span></div>
+            <div class="floating-chip chip-heart"><b>心率</b><span id="heroHeart">72 bpm</span></div>
+            <div class="floating-chip chip-sleep"><b>睡眠</b><span>7h 32m</span></div>
+            <svg class="pulse-line" viewBox="0 0 600 170" role="img" aria-label="脑电与心率融合波形">
+              <defs><linearGradient id="wave" x1="0" x2="1"><stop stop-color="#ffb45b"/><stop offset=".5" stop-color="#fb7f72"/><stop offset="1" stop-color="#62b7a9"/></linearGradient></defs>
+              <path id="heroWave" d="M0 100 C38 100 45 70 70 100 S110 132 142 100 S178 52 208 100 L230 100 L244 86 L257 116 L272 50 L285 132 L303 100 C338 100 350 74 380 100 S430 130 460 100 S505 66 540 100 S580 115 600 100" fill="none" stroke="url(#wave)" stroke-width="5" stroke-linecap="round"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-wrap story-section">
+        <div class="section-heading">
+          <div><p class="eyebrow">ONE CONTINUOUS STORY</p><h2>不再看一堆孤立数字</h2></div>
+          <p>心脑雷达把多模态数据变成“发生了什么—为什么值得关注—今天能做什么”的连续叙事。</p>
+        </div>
+        <div class="story-grid">
+          <article class="story-card brain-card"><span class="story-index">01</span><div class="mini-icon">⌁</div><h3>看见大脑状态</h3><p>EEG 专注、放松、疲劳与左右平衡趋势，支持实时流和文件导入。</p><div class="micro-chart bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></article>
+          <article class="story-card body-card"><span class="story-index">02</span><div class="mini-icon">♡</div><h3>理解身体节律</h3><p>融合心率、HRV、睡眠、运动、血糖、血压与生理周期记录。</p><div class="micro-chart line-mini" aria-hidden="true"><svg viewBox="0 0 250 70"><path d="M2 49 C30 32 45 62 70 39 S120 24 140 43 S184 63 205 28 S235 24 248 19"/></svg></div></article>
+          <article class="story-card soul-card"><span class="story-index">03</span><div class="mini-icon">✦</div><h3>获得温柔行动</h3><p>由数据分析、健康知识与心理陪伴三个角色共同生成可执行建议。</p><div class="coach-quote">“今晚先给自己 10 分钟缓冲，不需要把一切都解决。”</div></article>
+        </div>
+      </div>
+
+      <div class="section-wrap research-strip">
+        <div><span class="research-mark">N</span><div><small>RESEARCH FOUNDATION</small><strong>基于 Nature 2026 Personal Health Agent 开源框架设计</strong></div></div>
+        <p>三类专家智能体：数据科学 × 健康领域 × 健康教练</p>
+        <a href="https://doi.org/10.1038/s41586-026-11161-8" target="_blank" rel="noreferrer">查看论文 ↗</a>
+      </div>
+
+      <div class="section-wrap steps-section">
+        <div class="section-heading"><div><p class="eyebrow">FROM SIGNAL TO SUPPORT</p><h2>从信号到关怀，只需三步</h2></div></div>
+        <div class="steps-grid">
+          <div class="step"><span>1</span><h3>连接</h3><p>脑电帽、智能手表或已有 CSV / JSON 数据。</p></div>
+          <div class="step"><span>2</span><h3>理解</h3><p>跨模态趋势分析，寻找值得复核的变化组合。</p></div>
+          <div class="step"><span>3</span><h3>行动</h3><p>得到低负担建议，并在必要时提示咨询专业人士。</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="view dashboard-view" id="dashboard" data-view-panel="dashboard">
+      <div class="dashboard-shell section-wrap">
+        <div class="dash-greeting">
+          <div><p class="eyebrow" id="dashboardDate">TODAY</p><h1>晚上好，林然 <span>☀</span></h1><p>今天你的身心节律整体稳定，下午的专注波动与连续久坐同步出现。</p></div>
+          <div class="dash-actions"><button class="secondary-button" id="importDataButton">导入数据</button><button class="primary-button compact" id="connectDeviceButton">＋ 连接设备</button></div>
+        </div>
+        <div class="demo-notice"><span>演示模式</span> 页面展示的是合成数据，不构成医学诊断或治疗建议。紧急不适请及时联系当地急救服务。</div>
+
+        <div class="metrics-row">
+          <article class="metric-card metric-sync"><div class="metric-top"><span>身心同频度</span><b>今日</b></div><div class="ring-meter" style="--score:82"><div><strong id="syncScore">82</strong><small>良好</small></div></div><p><i class="trend-up">↗</i> 较近 7 日均值 +3</p></article>
+          <article class="metric-card"><div class="metric-top"><span>实时心率</span><b class="device-online">手表</b></div><strong class="metric-number"><span id="heartRate">72</span><small>bpm</small></strong><svg class="spark" viewBox="0 0 200 60"><path id="heartSpark" d="M0 34 L24 34 L31 29 L38 40 L47 12 L55 50 L66 34 L96 34 L104 30 L112 39 L121 16 L130 47 L141 34 L200 34"/></svg><p>静息区间 62–78</p></article>
+          <article class="metric-card"><div class="metric-top"><span>脑电放松度</span><b class="device-online">EEG</b></div><strong class="metric-number"><span id="calmScore">68</span><small>%</small></strong><div class="spectrum"><i style="--h:33%"></i><i style="--h:54%"></i><i style="--h:78%"></i><i style="--h:65%"></i><i style="--h:48%"></i><i style="--h:32%"></i><i style="--h:25%"></i></div><p>α 波活跃 · 轻度放松</p></article>
+          <article class="metric-card"><div class="metric-top"><span>昨夜睡眠</span><b>手表</b></div><strong class="metric-number">7<small>h</small> 32<small>m</small></strong><div class="sleep-track" title="深睡、浅睡、REM 与清醒"><i></i><i></i><i></i><i></i></div><p>入睡 23:18 · 评分 86</p></article>
+        </div>
+
+        <div class="dashboard-grid">
+          <article class="panel main-trend-panel">
+            <div class="panel-head"><div><span class="panel-kicker">心脑雷达</span><h2>24 小时同频趋势</h2></div><div class="segmented" role="group" aria-label="趋势时间范围"><button class="is-active">日</button><button>周</button><button>月</button></div></div>
+            <div class="chart-legend"><span><i class="legend-heart"></i>心率稳定度</span><span><i class="legend-brain"></i>脑电放松度</span><span><i class="legend-sync"></i>综合同频度</span></div>
+            <div class="trend-chart"><svg viewBox="0 0 800 260" preserveAspectRatio="none" role="img" aria-label="心率、脑电与同频度趋势图"><g class="grid-lines"><path d="M0 45H800M0 105H800M0 165H800M0 225H800"/></g><path class="area" d="M0 200 C70 195 90 137 155 150 S250 110 310 136 S390 178 455 120 S560 112 620 83 S730 115 800 60 L800 260 L0 260Z"/><path class="line brain-line" d="M0 200 C70 195 90 137 155 150 S250 110 310 136 S390 178 455 120 S560 112 620 83 S730 115 800 60"/><path class="line heart-line" d="M0 165 C70 130 115 170 170 142 S265 158 320 122 S420 92 485 130 S570 145 635 105 S720 90 800 107"/><path class="line sync-line" d="M0 183 C75 160 110 154 165 146 S250 133 317 129 S405 134 468 119 S555 125 628 94 S725 105 800 82"/></svg><div class="x-axis"><span>00:00</span><span>06:00</span><span>12:00</span><span>18:00</span><span>现在</span></div></div>
+            <div class="insight-callout"><span>AI 洞察</span><p><strong>15:20–16:10 出现短时不同频：</strong>脑电专注度下降 18%，同时心率较静息基线上升。结合 76 分钟连续坐姿，可能与认知疲劳相关。</p><button class="text-button" data-view="companion">问问灵犀 →</button></div>
+          </article>
+
+          <aside class="right-column">
+            <article class="panel radar-panel"><div class="panel-head"><div><span class="panel-kicker">趋势扫描</span><h2>今日风险雷达</h2></div><span class="low-risk">低风险</span></div><div class="radar-list"><div><span>睡眠恢复</span><b>86</b><i><em style="width:86%"></em></i></div><div><span>压力调节</span><b>73</b><i><em style="width:73%"></em></i></div><div><span>心血管负荷</span><b>81</b><i><em style="width:81%"></em></i></div><div><span>情绪平衡</span><b>76</b><i><em style="width:76%"></em></i></div></div><p class="radar-foot">未发现持续性异常组合。继续观察 3 天趋势。</p></article>
+            <article class="panel today-plan"><div class="panel-head"><div><span class="panel-kicker">微行动</span><h2>给今天的你</h2></div><span class="sun-icon">☼</span></div><label><input type="checkbox"><span><strong>10 分钟户外慢走</strong><small>建议在晚饭后 · 降低久坐负荷</small></span></label><label><input type="checkbox"><span><strong>睡前呼吸练习</strong><small>4-6 呼吸 · 5 分钟</small></span></label><label><input type="checkbox"><span><strong>写下一句今日小结</strong><small>给今天一个温柔的句号</small></span></label></article>
+          </aside>
+        </div>
+
+        <div class="health-snapshot">
+          <article><span>步数</span><strong>8,642</strong><small>目标 10,000</small></article>
+          <article><span>血压</span><strong>118/76</strong><small>mmHg · 手动录入</small></article>
+          <article><span>血糖</span><strong>5.2</strong><small>mmol/L · 空腹</small></article>
+          <article><span>HRV</span><strong>46</strong><small>ms · 近 7 日稳定</small></article>
+          <article><span>生理周期</span><strong>第 12 天</strong><small>预计排卵窗</small></article>
+          <article><span>今日情绪</span><strong>平静</strong><small>能量 7/10</small></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="view companion-view" id="companion" data-view-panel="companion">
+      <div class="companion-shell section-wrap">
+        <aside class="agent-sidebar">
+          <div class="agent-title"><img src="assets/logo-mark.svg" alt=""><div><strong>灵犀陪伴智能体</strong><small>多角色协同 · 演示模式</small></div></div>
+          <div class="agent-role is-active"><span>Σ</span><div><strong>数据科学智能体</strong><small>时间序列与趋势发现</small></div><i>在线</i></div>
+          <div class="agent-role"><span>✚</span><div><strong>健康领域智能体</strong><small>知识解释与安全边界</small></div><i>在线</i></div>
+          <div class="agent-role"><span>♡</span><div><strong>温暖教练智能体</strong><small>倾听、目标与微行动</small></div><i>在线</i></div>
+          <div class="privacy-card"><strong>你的数据属于你</strong><p>当前演示数据仅在浏览器本地处理，不会上传到服务器。</p></div>
+        </aside>
+        <div class="chat-panel">
+          <div class="chat-head"><div><h1>晚上好，我是灵犀 <span>☀</span></h1><p>我可以和你一起读懂数据，也愿意听你聊聊今天。</p></div><button class="icon-button" id="clearChat" aria-label="清空对话">↻</button></div>
+          <div class="chat-messages" id="chatMessages" aria-live="polite">
+            <div class="message bot"><img src="assets/logo-mark.svg" alt=""><div><p>我看过你今天的趋势了：整体稳定，不过下午 3 点后专注度有一段明显下降。你想先从<strong>数据原因</strong>聊起，还是从<strong>今天的感受</strong>聊起？</p><small>灵犀 · 刚刚</small></div></div>
+          </div>
+          <div class="prompt-chips"><button>为什么下午容易疲惫？</button><button>分析我最近的睡眠</button><button>我今天有点焦虑</button><button>给我一个今晚计划</button></div>
+          <form class="chat-form" id="chatForm"><label for="chatInput" class="sr-only">对灵犀说</label><input id="chatInput" autocomplete="off" placeholder="和灵犀说说你的感受或数据问题…"><button type="submit">发送 ↑</button></form>
+          <p class="chat-disclaimer">AI 回答仅用于健康管理与情绪支持，不替代医生或心理咨询师。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="view reports-view" id="reports" data-view-panel="reports">
+      <div class="section-wrap reports-shell">
+        <div class="page-title"><div><p class="eyebrow">PERSONAL HEALTH VAULT</p><h1>健康档案，一处看懂</h1><p>导入体检报告与设备数据，建立属于你的纵向健康基线。</p></div><button class="primary-button" id="uploadReportButton">＋ 一键导入报告</button></div>
+        <div class="import-grid">
+          <article class="upload-zone" id="uploadZone" tabindex="0"><input type="file" id="reportFile" accept=".pdf,.png,.jpg,.jpeg,.csv,.json" multiple hidden><span>⇧</span><h2>拖拽或选择文件</h2><p>支持 PDF、图片、CSV 与 JSON；演示版仅在本地读取文件名与结构。</p><button class="secondary-button" type="button">选择文件</button><small>请先去除身份证号等不必要信息</small></article>
+          <article class="panel schema-panel"><span class="panel-kicker">已支持数据</span><h2>设备与记录</h2><div class="schema-tags"><span>EEG 频段</span><span>心率 / HRV</span><span>睡眠阶段</span><span>步数 / 运动</span><span>血压</span><span>血糖</span><span>生理周期</span><span>情绪日记</span></div><a href="data/mindlink-sample.json" download>下载示例 JSON →</a></article>
+        </div>
+        <div class="report-list" id="reportList">
+          <div class="report-row"><span class="file-icon">PDF</span><div><strong>年度体检报告 · 演示</strong><small>2026-08-18 · 18 项指标 · 合成数据</small></div><span class="report-status">已结构化</span><button aria-label="查看年度体检报告">查看</button></div>
+          <div class="report-row"><span class="file-icon csv">CSV</span><div><strong>可穿戴设备 365 天数据</strong><small>来自论文官方仓库的合成样例字段</small></div><span class="report-status">已同步</span><button aria-label="查看可穿戴设备数据">查看</button></div>
+        </div>
+        <div class="assessments">
+          <div class="section-heading"><div><p class="eyebrow">KNOW YOURSELF</p><h2>了解自己，不给自己贴标签</h2></div><p>这些工具用于自我反思，不是医学、招聘或官方盖洛普测评。</p></div>
+          <div class="assessment-grid">
+            <article><span class="assess-icon">✦</span><h3>优势倾向探索</h3><p>从能量来源、行动方式与协作偏好，发现你的自然优势。</p><button class="text-button assessment-start" data-assessment="优势倾向">开始 3 分钟探索 →</button></article>
+            <article><span class="assess-icon">◌</span><h3>人格光谱</h3><p>以连续维度理解自己，避免用单一类型限制未来。</p><button class="text-button assessment-start" data-assessment="人格光谱">开始探索 →</button></article>
+            <article><span class="assess-icon">↗</span><h3>职业动力地图</h3><p>识别工作中真正带来意义、投入和恢复的条件。</p><button class="text-button assessment-start" data-assessment="职业动力">开始探索 →</button></article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="view profile-view" id="profile" data-view-panel="profile">
+      <div class="section-wrap profile-shell"><div class="page-title"><div><p class="eyebrow">SETTINGS & DEVICES</p><h1>我的心脑灵犀</h1><p>管理设备、隐私偏好与个人健康基线。</p></div></div><div class="profile-grid"><article class="panel"><h2>已连接设备</h2><div class="device-row"><span>⌁</span><div><strong>MindCap EEG-8</strong><small>8 通道 · 250 Hz · 电量 82%</small></div><i>实时</i></div><div class="device-row"><span>⌚</span><div><strong>智能手表</strong><small>心率、HRV、睡眠、运动</small></div><i>实时</i></div><button class="secondary-button" id="profileConnect">＋ 添加设备</button></article><article class="panel"><h2>隐私模式</h2><label class="toggle-row"><span><strong>本地优先处理</strong><small>默认不上传原始脑电与健康文件</small></span><input type="checkbox" checked></label><label class="toggle-row"><span><strong>异常趋势提醒</strong><small>只提醒持续变化，不制造焦虑</small></span><input type="checkbox" checked></label><label class="toggle-row"><span><strong>研究数据贡献</strong><small>需单独知情同意，当前关闭</small></span><input type="checkbox"></label></article></div></div>
+    </section>
+  </main>
+
+  <nav class="mobile-nav" aria-label="移动端导航"><button class="is-active" data-view="home"><span>⌂</span>首页</button><button data-view="dashboard"><span>⌁</span>状态</button><button class="ai-nav" data-view="companion"><span>✦</span>灵犀</button><button data-view="reports"><span>▤</span>档案</button><button data-view="profile"><span>○</span>我的</button></nav>
+
+  <div class="modal" id="deviceModal" aria-hidden="true"><div class="modal-backdrop" data-close-modal></div><div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="deviceTitle"><button class="modal-close" data-close-modal aria-label="关闭">×</button><span class="modal-icon">⌁</span><h2 id="deviceTitle">连接你的设备</h2><p>原型支持 Web Bluetooth / WebSocket 网关的接入设计。当前可启动合成实时流，验证完整交互。</p><button class="device-option" id="simulateEEG"><span>⌁</span><div><strong>MindCap EEG 脑电帽</strong><small>启动 8 通道 250 Hz 合成数据</small></div><b>演示连接</b></button><button class="device-option" id="simulateWatch"><span>⌚</span><div><strong>智能手表</strong><small>心率、HRV、睡眠与运动</small></div><b>演示连接</b></button><small class="modal-note">真实硬件接入需要厂商 SDK 或 BLE GATT 服务定义。</small></div></div>
+  <div class="modal" id="assessmentModal" aria-hidden="true"><div class="modal-backdrop" data-close-modal></div><div class="modal-card assessment-modal" role="dialog" aria-modal="true" aria-labelledby="assessmentTitle"><button class="modal-close" data-close-modal aria-label="关闭">×</button><p class="eyebrow">SELF REFLECTION</p><h2 id="assessmentTitle">优势倾向探索</h2><div id="assessmentContent"></div></div></div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <input type="file" id="dataFile" accept=".csv,.json" hidden>
+
+  <footer><div class="section-wrap"><div class="brand footer-brand"><img src="assets/logo-mark.svg" alt=""><span><strong>心脑灵犀</strong><small>MindLink</small></span></div><p>看见身心同频，提前守护健康。</p><div><a href="https://github.com/Google-Health/consumer-health-research/tree/main/personal_health_agent" target="_blank" rel="noreferrer">研究来源</a><button id="installPwa" hidden>安装到桌面</button><span>© 2026 MindLink Prototype</span></div></div></footer>
+  <script src="app.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+{
+  "name": "心脑灵犀 MindLink",
+  "short_name": "心脑灵犀",
+  "description": "融合脑电、可穿戴与健康档案的身心健康趋势智能体",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#fff9ee",
+  "theme_color": "#ff9b73",
+  "lang": "zh-CN",
+  "icons": [
+    {"src": "assets/logo-mark.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable"}
+  ]
+}

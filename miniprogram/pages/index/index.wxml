@@ -1,0 +1,13 @@
+<view class="page safe">
+  <view class="hello"><view><text class="eyebrow">MONDAY · 16 NOV</text><text class="title">晚上好，林然 ☀</text><text class="subtitle">今天的身心节律整体稳定</text></view><view class="avatar">林</view></view>
+  <view class="notice">演示数据 · 本产品用于健康趋势管理，不构成医学诊断。</view>
+  <view class="sync card"><view class="live"><text class="dot"></text> EEG + WATCH LIVE</view><view class="score-ring"><text class="score">{{sync}}</text><text>身心同频度</text></view><text class="sync-note">稳定 · 较昨日 +4</text><view class="wave">⌁⌁⌁⌁⌁⌁⌁⌁</view></view>
+  <view class="metrics">
+    <view class="metric card"><text class="label">实时心率</text><view><text class="value">{{heartRate}}</text><text class="unit"> bpm</text></view><text class="hint">静息区间 62–78</text></view>
+    <view class="metric card"><text class="label">脑电放松度</text><view><text class="value">{{calm}}</text><text class="unit">%</text></view><view class="bars"><text></text><text></text><text></text><text></text><text></text></view></view>
+    <view class="metric card"><text class="label">昨夜睡眠</text><view><text class="value">7</text><text class="unit">h 32m</text></view><text class="hint">评分 86 · 良好</text></view>
+    <view class="metric card"><text class="label">今日步数</text><view><text class="value">8,642</text></view><text class="hint">目标 10,000</text></view>
+  </view>
+  <view class="insight card"><view class="insight-head"><text class="tag">AI 洞察</text><text class="low">低风险</text></view><text class="insight-title">下午出现短时不同频</text><text class="muted">15:20 后专注度下降 18%，与 76 分钟连续坐姿同步。更像认知负荷累积，建议先短暂走动。</text><button class="ask" bindtap="goAgent">问问灵犀 →</button></view>
+  <view class="quick"><button class="primary" bindtap="toggleLive">{{live ? '暂停实时流' : '体验实时设备流'}}</button><button class="secondary" bindtap="goReports">导入健康数据</button></view>
+</view>

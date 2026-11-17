@@ -1,0 +1,12 @@
+{
+  "pages": ["pages/index/index", "pages/agent/agent", "pages/reports/reports"],
+  "window": {
+    "navigationBarTitleText": "心脑灵犀",
+    "navigationBarBackgroundColor": "#fff9ee",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#fbfaf5",
+    "backgroundTextStyle": "light"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}
